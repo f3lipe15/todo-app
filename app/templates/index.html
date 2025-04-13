@@ -2,19 +2,20 @@
 <html>
 <head>
     <title>ToDo Lista</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Moje zadania</h1>
     <form method="POST">
         <input type="text" name="task" placeholder="Nowe zadanie">
-        <button type="submit">Dodaj</button>
+        <button class="btn" type="submit">Dodaj</button>
     </form>
 
     <ul>
         {% for id, content, done in tasks %}
             <li>
                 {% if done %}
-                    <s>{{ content }}</s>
+                   ✅ <s>{{ content }}</s>
                 {% else %}
                     {{ content }}
                     <a href="/done/{{ id }}">[✔]</a>
