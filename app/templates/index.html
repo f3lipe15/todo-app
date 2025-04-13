@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>ToDo Lista</title>
+</head>
+<body>
+    <h1>Moje zadania</h1>
+    <form method="POST">
+        <input type="text" name="task" placeholder="Nowe zadanie">
+        <button type="submit">Dodaj</button>
+    </form>
+
+    <ul>
+        {% for id, content, done in tasks %}
+            <li>
+                {% if done %}
+                    <s>{{ content }}</s>
+                {% else %}
+                    {{ content }}
+                    <a href="/done/{{ id }}">[✔]</a>
+                {% endif %}
+                <a href="/delete/{{ id }}">[🗑️]</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
